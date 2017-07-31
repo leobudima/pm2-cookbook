@@ -89,6 +89,13 @@ action :start_or_restart do
   pm2_command("startOrRestart #{pm2_config}")
 end
 
+action :start_or_restart_local do
+  Chef::Log.info "Start or restart pm2 application #{new_resource.name} from local config file"
+
+  # Start or restart pm2 application
+  pm2_command("startOrRestart #{pm2_config_local}")
+end
+
 action :start_or_reload do
   Chef::Log.info "Start or reload pm2 application #{new_resource.name}"
 
@@ -125,6 +132,10 @@ end
 
 def pm2_config
   "/etc/pm2/conf.d/#{new_resource.name}.json"
+end
+
+def pm2_config_local
+  "#{new_resource.cwd}/#{new_resource.name}-pm2.config.json"
 end
 
 def pm2_command(pm2_command)

@@ -22,6 +22,10 @@ if defined?(ChefSpec)
   def start_or_restart_pm2_application(name)
     ChefSpec::Matchers::ResourceMatcher.new(:pm2_application, :start_or_restart, name)
   end
+  
+   def start_or_restart_local_pm2_application(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:pm2_application, :start_or_restart_local, name)
+  end
 
   def start_or_reload_pm2_application(name)
     ChefSpec::Matchers::ResourceMatcher.new(:pm2_application, :start_or_reload, name)

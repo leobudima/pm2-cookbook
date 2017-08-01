@@ -135,7 +135,7 @@ def pm2_config
 end
 
 def pm2_config_local
-  "#{new_resource.cwd}/#{new_resource.name}-pm2.config.json"
+  "#{new_resource.cwd}/#{new_resource.name}-pm2.config.js"
 end
 
 def pm2_command(pm2_command)

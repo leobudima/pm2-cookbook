@@ -134,8 +134,9 @@ def pm2_config
   "/etc/pm2/conf.d/#{new_resource.name}.json"
 end
 
+# Reading info provided in core.rb recipe
 def pm2_config_local
-  "#{new_resource.cwd}/#{new_resource.name}-pm2.config.js"
+  "#{new_resource.cwd}/#{new_resource.name}-pm2.#{new_resource.env}.config.js"
 end
 
 def pm2_command(pm2_command)

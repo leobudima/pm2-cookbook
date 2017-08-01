@@ -93,7 +93,7 @@ action :start_or_restart_local do
   Chef::Log.info "Start or restart pm2 application #{new_resource.name} from local config file"
 
   # Start or restart pm2 application
-  pm2_command("startOrRestart #{pm2_config_local}")
+  pm2_command("startOrRestart #{pm2_config_local} --env #{new_resource.env}")
 end
 
 action :start_or_reload do
@@ -136,7 +136,7 @@ end
 
 # Reading info provided in core.rb recipe
 def pm2_config_local
-  "#{new_resource.cwd}/#{new_resource.name}-pm2.#{new_resource.env}.config.js"
+  "#{new_resource.cwd}/#{new_resource.name}-pm2.config.js"
 end
 
 def pm2_command(pm2_command)
